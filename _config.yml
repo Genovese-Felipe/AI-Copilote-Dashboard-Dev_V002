@@ -1,0 +1,8 @@
+theme: jekyll-theme-minimal
+title: AI Copilot Dashboard
+description: Advanced incident analysis and data visualization platform
+show_downloads: true
+google_analytics: 
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed

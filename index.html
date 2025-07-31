@@ -319,9 +319,13 @@
 
         <!-- Navigation -->
         <nav class="nav">
-            <a href="dashboard.html" class="nav-button primary">
+            <a href="main_dashboard.html" class="nav-button primary">
                 <i class="fas fa-chart-bar"></i>
                 View Live Dashboard
+            </a>
+            <a href="dashboard.html" class="nav-button">
+                <i class="fas fa-analytics"></i>
+                Alternative View
             </a>
             <a href="https://github.com/Genovese-Felipe/AI-Copilote-Dashboard-Dev_V002" class="nav-button" target="_blank">
                 <i class="fab fa-github"></i>
@@ -330,10 +334,6 @@
             <a href="#features" class="nav-button">
                 <i class="fas fa-star"></i>
                 Features
-            </a>
-            <a href="#tech-stack" class="nav-button">
-                <i class="fas fa-code"></i>
-                Technology
             </a>
         </nav>
 
@@ -490,6 +490,31 @@
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
+        });
+
+        // Auto-redirect to dashboard after 10 seconds (optional)
+        let autoRedirectTimer;
+        function startAutoRedirect() {
+            autoRedirectTimer = setTimeout(() => {
+                if (confirm('Você gostaria de ir diretamente para o Dashboard?')) {
+                    window.location.href = 'main_dashboard.html';
+                }
+            }, 10000);
+        }
+
+        // Start auto redirect when page loads
+        window.addEventListener('load', () => {
+            setTimeout(startAutoRedirect, 3000);
+        });
+
+        // Cancel auto redirect if user interacts with page
+        ['click', 'scroll', 'keydown'].forEach(event => {
+            document.addEventListener(event, () => {
+                if (autoRedirectTimer) {
+                    clearTimeout(autoRedirectTimer);
+                    autoRedirectTimer = null;
+                }
+            }, { once: true });
         });
     </script>
 </body>

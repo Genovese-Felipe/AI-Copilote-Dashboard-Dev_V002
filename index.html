@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Copilot Dashboard - Project Showcase</title>
+    <meta name="description" content="AI-powered dashboard for incident analysis and data visualization">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 2rem 0;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .nav-button.primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .nav-button.primary:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6a4190);
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .tech-stack h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Project Info */
+        .project-info {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            border-left: 4px solid;
+            border-image: linear-gradient(135deg, #667eea, #764ba2) 1;
+        }
+
+        .info-item h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .info-item p {
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .features h2,
+            .tech-stack h2,
+            .project-info h2 {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-robot"></i> AI Copilot Dashboard</h1>
+            <p>Advanced incident analysis and data visualization platform powered by artificial intelligence and modern web technologies</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="dashboard.html" class="nav-button primary">
+                <i class="fas fa-chart-bar"></i>
+                View Live Dashboard
+            </a>
+            <a href="https://github.com/Genovese-Felipe/AI-Copilote-Dashboard-Dev_V002" class="nav-button" target="_blank">
+                <i class="fab fa-github"></i>
+                Source Code
+            </a>
+            <a href="#features" class="nav-button">
+                <i class="fas fa-star"></i>
+                Features
+            </a>
+            <a href="#tech-stack" class="nav-button">
+                <i class="fas fa-code"></i>
+                Technology
+            </a>
+        </nav>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <h2><i class="fas fa-star"></i> Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Interactive Visualizations</h3>
+                    <p>Dynamic charts and graphs built with Plotly for real-time data exploration and analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>Advanced Filtering</h3>
+                    <p>Multi-dimensional filtering capabilities to drill down into specific data segments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Fully responsive interface that works seamlessly across desktop, tablet, and mobile devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Analytics</h3>
+                    <p>Intelligent data processing and pattern recognition for deeper insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Real-Time Updates</h3>
+                    <p>Live data synchronization and automatic refresh capabilities</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Export Functionality</h3>
+                    <p>Export charts and data in multiple formats including PDF, PNG, and CSV</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Stack -->
+        <section id="tech-stack" class="tech-stack">
+            <h2><i class="fas fa-code"></i> Technology Stack</h2>
+            <p>Built with modern, industry-standard technologies for performance and scalability</p>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fab fa-python"></i><br>
+                    Python 3.12
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-chart-area"></i><br>
+                    Plotly
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-tachometer-alt"></i><br>
+                    Dash
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-table"></i><br>
+                    Pandas
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-calculator"></i><br>
+                    NumPy
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-bootstrap"></i><br>
+                    Bootstrap
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-html5"></i><br>
+                    HTML5
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt"></i><br>
+                    CSS3
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-js-square"></i><br>
+                    JavaScript
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Information -->
+        <section class="project-info">
+            <h2><i class="fas fa-info-circle"></i> Project Overview</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3><i class="fas fa-target"></i> Purpose</h3>
+                    <p>Comprehensive incident analysis platform for tracking, analyzing, and visualizing safety and operational incidents across multiple locations</p>
+                </div>
+                <div class="info-item">
+                    <h3><i class="fas fa-database"></i> Data Processing</h3>
+                    <p>Handles over 4,600 incident records with advanced aggregation and statistical analysis capabilities</p>
+                </div>
+                <div class="info-item">
+                    <h3><i class="fas fa-users"></i> Target Users</h3>
+                    <p>Safety managers, operations teams, and executives who need insights into incident patterns and trends</p>
+                </div>
+                <div class="info-item">
+                    <h3><i class="fas fa-rocket"></i> Performance</h3>
+                    <p>Optimized for fast loading and smooth interactions, even with large datasets</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><strong>AI Copilot Dashboard</strong> - Transforming data into actionable insights</p>
+            <p>Built with ❤️ using modern web technologies</p>
+            <div class="social-links">
+                <a href="https://github.com/Genovese-Felipe/AI-Copilote-Dashboard-Dev_V002" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="dashboard.html" class="social-link">
+                    <i class="fas fa-chart-bar"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

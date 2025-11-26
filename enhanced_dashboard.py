@@ -220,7 +220,7 @@ def create_enhanced_dashboard(df):
     
     return fig
 
-def generate_enhanced_html(df):
+def create_dashboard_layout(df):
     """Generate enhanced HTML with modern design"""
     print("🔄 Generating enhanced HTML dashboard...")
     
@@ -723,20 +723,23 @@ def generate_enhanced_html(df):
     </script>
 </body>
 </html>"""
+    return html_content
+
+def create_main_dashboard_file(df):
+    """Generate the main dashboard HTML file"""
+    html_content = create_dashboard_layout(df)
     
     # Save the enhanced dashboard
-    filename = "main_dashboard.html"
+    filename = "dashboard.html"
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
     print(f"✅ Enhanced dashboard saved as: {filename}")
-    print(f"📊 Dashboard contains {total_records:,} records and {total_incidents:,} incidents")
-    print(f"📈 Average incidents per record: {avg_incidents:.1f}")
     return filename
 
 if __name__ == "__main__":
     # Generate data and create enhanced dashboard
     df = generate_data()
-    filename = generate_enhanced_html(df)
+    filename = create_main_dashboard_file(df)
     print("🎉 Enhanced dashboard generation complete!")
     print(f"🌐 Open {filename} in your browser to view the dashboard")

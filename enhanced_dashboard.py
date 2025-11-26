@@ -734,6 +734,11 @@ def create_main_dashboard_file(df):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
+    # Print statistics for user feedback
+    total_records = len(df)
+    total_incidents = df['Count'].sum()
+    avg_incidents = total_incidents / total_records if total_records > 0 else 0
+    print(f"📊 Dashboard statistics: {total_records} records, {total_incidents} total incidents, {avg_incidents:.2f} avg incidents/record")
     print(f"✅ Enhanced dashboard saved as: {filename}")
     return filename
 

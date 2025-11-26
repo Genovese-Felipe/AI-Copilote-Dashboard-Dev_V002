@@ -1,0 +1,11 @@
+# GitHub Linguist overrides
+# Mark generated HTML dashboard files as generated to exclude from language statistics
+# This allows Python to be correctly recognized as the primary language
+
+# Generated dashboard HTML files (output from Python scripts)
+Dashboard.html linguist-generated=true
+dashboard.html linguist-generated=true
+main_dashboard.html linguist-generated=true
+
+# Jupyter notebook files (contain auto-generated JSON, not primary source)
+*.ipynb linguist-generated=true

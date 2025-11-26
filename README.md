@@ -72,15 +72,10 @@ This project showcases a comprehensive dashboard for incident analysis, featurin
 
 3. **Run the dashboard generator**
    ```bash
-   python generate_dashboard.py
+   python app.py
    ```
 
-4. **Start the interactive dashboard**
-   ```bash
-   python Untitled-1.py
-   ```
-
-5. **Open your browser** and navigate to `http://localhost:8050`
+4. **Open your browser** and open the `dashboard.html` file.
 
 ## 📁 Project Structure
 
@@ -88,7 +83,8 @@ This project showcases a comprehensive dashboard for incident analysis, featurin
 AI-Copilote-Dashboard-Dev_V002/
 ├── 📄 index.html                 # GitHub Pages landing page
 ├── 📊 dashboard.html             # Static dashboard export
-├── 🐍 generate_dashboard.py      # Dashboard generator script
+├── 🐍 app.py                     # Main application to generate the dashboard
+├── 🐍 enhanced_dashboard.py      # Dashboard generation logic
 ├── 📓 Untitled-1.ipynb          # Jupyter notebook version
 ├── 🐍 Untitled-1.py             # Interactive Dash application
 ├── 📋 README.md                  # Project documentation

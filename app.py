@@ -32,7 +32,6 @@ import pandas as pd
 import numpy as np
 
 categories = ['Customer', 'Spill', 'Injury', 'Transport', 'Equipment', 'Security', 'Divergence', 'Complaint']
-df.to_csv('../data/incidents.csv', index=False)
 # Parâmetros principais
 categories = ['Customer', 'Spill', 'Injury', 'Transport', 'Equipment', 'Security', 'Divergence', 'Complaint']
 causes = ['Material', 'Procedure', 'Design', 'Training', 'Management', 'External', 'Equipment', 'Personnel']
@@ -67,7 +66,6 @@ for year in years:
 
 df = pd.DataFrame(records)
 print(f"✅ Dados gerados! Total de registros: {len(df)}")
-display(df.head())
 
 # %%
 

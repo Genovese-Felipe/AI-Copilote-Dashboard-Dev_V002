@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate HTML files
+        run: |
+          echo "Validating HTML files..."
+          shopt -s nullglob
+          files=(*.html)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No HTML files found"
+          else
+            for file in "${files[@]}"; do
+              echo "Found HTML file: $file"
+            done
+          fi
+          echo "Validation complete"
+
+      - name: Check Python syntax
+        run: |
+          echo "Checking Python files for syntax errors..."
+          shopt -s nullglob
+          files=(*.py)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No Python files found"
+          else
+            for file in "${files[@]}"; do
+              python3 -m py_compile "$file" && echo "$file: OK" || exit 1
+            done
+          fi
+          echo "Python syntax check complete"

@@ -221,7 +221,7 @@ def create_enhanced_dashboard(df):
     return fig
 
 def create_dashboard_layout(df):
-    """Generate enhanced HTML with modern design"""
+    """Create the HTML layout for the dashboard, including statistics and visualizations."""
     print("🔄 Generating enhanced HTML dashboard...")
     
     # Create dashboard
@@ -734,13 +734,7 @@ def create_main_dashboard_file(df):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    total_records = len(df)
-    total_incidents = df['Count'].sum()
-    avg_incidents = df['Count'].mean()
-
     print(f"✅ Enhanced dashboard saved as: {filename}")
-    print(f"📊 Dashboard contains {total_records:,} records and {total_incidents:,} incidents")
-    print(f"📈 Average incidents per record: {avg_incidents:.1f}")
     return filename
 
 if __name__ == "__main__":
